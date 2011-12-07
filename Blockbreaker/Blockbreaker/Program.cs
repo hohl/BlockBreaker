@@ -10,7 +10,7 @@ namespace Blockbreaker
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (BlockBreakerGame game = new BlockBreakerGame())
             {
                 game.Run();
             }

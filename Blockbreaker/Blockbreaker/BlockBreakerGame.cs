@@ -8,18 +8,20 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Blockbreaker.Logic;
 
 namespace Blockbreaker
 {
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class BlockBreakerGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        GameLevel gameLevel;
 
-        public Game1()
+        public BlockBreakerGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -47,7 +49,10 @@ namespace Blockbreaker
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            // Load textures
+            Block.Texture = Content.Load<Texture2D>("BlockTexture");
+            Platform.Texture = Content.Load<Texture2D>("PlatformTexture");
+            Ball.Texture = Content.Load<Texture2D>("BallTexture");
         }
 
         /// <summary>
@@ -70,7 +75,11 @@ namespace Blockbreaker
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            // Update the game level and all it's contained objects.
+            if (gameLevel != null)
+            {
+                gameLevel.UpdateGameTime(gameTime);
+            }
 
             base.Update(gameTime);
         }
@@ -83,9 +92,61 @@ namespace Blockbreaker
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            this.DrawBlocks(spriteBatch, gameLevel.Blocks);
+            this.DrawPlatfrom(spriteBatch, gameLevel.Platform);
+            this.DrawBalls(spriteBatch, gameLevel.Balls);
+            spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        /// <summary>
+        /// Draws the blocks on the sprite batch
+        /// </summary>
+        /// <param name="spriteBatch">batch used to output</param>
+        /// <param name="blocks">blocks to become drawed to batch</param>
+        private void DrawBlocks(SpriteBatch spriteBatch, List<Block> blocks)
+        {
+            foreach (Block block in blocks) {
+                spriteBatch.Draw(Block.Texture, block.Position, block.Color);
+            }
+        }
+
+        /// <summary>
+        /// Draws the platform to the sprite batch
+        /// </summary>
+        /// <param name="spriteBatch">batch used to output</param>
+        /// <param name="blocks">blocks to output</param>
+        private void DrawPlatfrom(SpriteBatch spriteBatch, Platform platform)
+        {
+            spriteBatch.Draw(Platform.Texture, platform.Position, platform.Color);
+        }
+
+        /// <summary>
+        /// Draws the balls to the sprite batch.
+        /// </summary>
+        /// <param name="spriteBatch">batch used to output</param>
+        /// <param name="balls">balls to output</param>
+        private void DrawBalls(SpriteBatch spriteBatch, List<Ball> balls)
+        {
+            foreach (Ball ball in balls)
+            {
+                spriteBatch.Draw(Ball.Texture, ball.Position, ball.Color);
+            }
+        }
+
+        /// <summary>
+        /// Draws the item containers to the sprite batch.
+        /// </summary>
+        /// <param name="spriteBatch">batch used to output</param>
+        /// <param name="containers">containers to output</param>
+        private void DrawItemContainers(SpriteBatch spriteBatch, List<ItemContainer> containers)
+        {
+            foreach (ItemContainer container in containers)
+            {
+                spriteBatch.Draw(container.Item.GetTexture(), container.Position, Color.White);
+            }
         }
     }
 }
