@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Game Logic - Used to store and manage game objects:">
+    <Position X="0.5" Y="0.5" Height="0.292" Width="3.158" />
+  </Comment>
+  <Comment CommentText="Program - Classes used to handle the output via XNA Framework">
+    <Position X="0.5" Y="4.479" Height="0.263" Width="3.731" />
+  </Comment>
+  <Class Name="Blockbreaker.BlockBreakerGame" Collapsed="true">
+    <Position X="2.75" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAEUAAAgAAAwAAAAAAAAAAgAAAAAgAAEAAAAgAAAQ=</HashCode>
+      <FileName>BlockBreakerGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blockbreaker.Program" Collapsed="true">
+    <Position X="0.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blockbreaker.Logic.Ball">
+    <Position X="4" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAIEgAAAAAA=</HashCode>
+      <FileName>Game Logic\Ball.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blockbreaker.Logic.Block">
+    <Position X="7.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAAAAIAgAAAAAA=</HashCode>
+      <FileName>Game Logic\Block.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blockbreaker.Logic.GameLevel">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAACAAAAAAIAAAAAAAEAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Game Logic\GameLevel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blockbreaker.Logic.ItemContainer">
+    <Position X="5.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game Logic\ItemContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blockbreaker.Logic.Platform">
+    <Position X="2.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAIAgAAAAAA=</HashCode>
+      <FileName>Game Logic\Platform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Blockbreaker.Logic.Item">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game Logic\Item.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
