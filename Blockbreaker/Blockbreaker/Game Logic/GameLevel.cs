@@ -12,6 +12,11 @@ namespace Blockbreaker.Logic
     class GameLevel
     {
         /// <summary>
+        /// Screen dimensions
+        /// </summary>
+        protected float width, height;
+
+        /// <summary>
         /// Platform which is controlled by the player.
         /// </summary>
         public Bat Bat
@@ -47,6 +52,12 @@ namespace Blockbreaker.Logic
             set;
         }
 
+        public GameLevel(float width, float height)
+        {
+            this.Bat = new Bat();
+            this.Bat.Position = new Vector2(width / 2, height - Bat.Texture.Height - 20);
+        }
+
         /// <summary>
         /// Manages the movements and actions of the 
         /// </summary>
@@ -54,6 +65,15 @@ namespace Blockbreaker.Logic
         public void UpdateGameTime(GameTime gameTime)
         {
             // ToDo: Implement!
+        }
+
+        /// <summary>
+        /// Manages the position of the bat
+        /// </summary>
+        /// <param name="mousePosition">Position of mouse</param>
+        public void UpdateInputDevice(Vector2 mousePosition)
+        {
+            this.Bat.Position = new Vector2(mousePosition.X - Bat.Texture.Width / 2, this.Bat.Position.Y);
         }
     }
 }

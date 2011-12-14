@@ -53,6 +53,8 @@ namespace Blockbreaker
             Block.Texture = Content.Load<Texture2D>("BlockTexture");
             Bat.Texture = Content.Load<Texture2D>("BatTexture");
             Ball.Texture = Content.Load<Texture2D>("BallTexture");
+
+            gameLevel = new GameLevel(spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth, spriteBatch.GraphicsDevice.PresentationParameters.BackBufferHeight); // ToDo: Read screen dimensions
         }
 
         /// <summary>
@@ -71,6 +73,9 @@ namespace Blockbreaker
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            MouseState mouseState = Mouse.GetState();
+            Vector2 mousePos = new Vector2(mouseState.X,mouseState.Y);
+
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -79,6 +84,7 @@ namespace Blockbreaker
             if (gameLevel != null)
             {
                 gameLevel.UpdateGameTime(gameTime);
+                gameLevel.UpdateInputDevice(mousePos);
             }
 
             base.Update(gameTime);
@@ -90,12 +96,12 @@ namespace Blockbreaker
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
-            this.DrawBlocks(spriteBatch, gameLevel.Blocks);
-            this.DrawPlatfrom(spriteBatch, gameLevel.Bat);
-            this.DrawBalls(spriteBatch, gameLevel.Balls);
+            //this.DrawBlocks(spriteBatch, gameLevel.Blocks);
+            this.DrawBat(spriteBatch, gameLevel.Bat);
+            //this.DrawBalls(spriteBatch, gameLevel.Balls);
             spriteBatch.End();
 
             base.Draw(gameTime);
@@ -118,7 +124,7 @@ namespace Blockbreaker
         /// </summary>
         /// <param name="spriteBatch">batch used to output</param>
         /// <param name="blocks">blocks to output</param>
-        private void DrawPlatfrom(SpriteBatch spriteBatch, Bat bat)
+        private void DrawBat(SpriteBatch spriteBatch, Bat bat)
         {
             spriteBatch.Draw(Bat.Texture, bat.Position, bat.Color);
         }

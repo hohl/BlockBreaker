@@ -9,7 +9,7 @@
   <Class Name="Blockbreaker.BlockBreakerGame" Collapsed="true">
     <Position X="2.75" Y="5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAQAEUAAAgAAAwAAAAAAAAAAgAAAAAgAAEAAAAgAAAQ=</HashCode>
+      <HashCode>AAQgEUAAAAAAAwAAAAAAAAAAgAAAAAgAAEAAAAAAQAQ=</HashCode>
       <FileName>BlockBreakerGame.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,13 +31,13 @@
     <Position X="7.5" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAAAAIAgAAAAAA=</HashCode>
-      <FileName>Game Logic\Block.cs</FileName>
+      <FileName>Block.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Blockbreaker.Logic.GameLevel">
     <Position X="0.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAACAAAAAAIAAAAAAAEAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAEAAAAAAgACAgAAAAIAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Game Logic\GameLevel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -48,15 +48,15 @@
       <FileName>Game Logic\ItemContainer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Blockbreaker.Logic.Platform">
+  <Class Name="Blockbreaker.Logic.Bat">
     <Position X="2.25" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAIAgAAAAAA=</HashCode>
-      <FileName>Game Logic\Platform.cs</FileName>
+      <FileName>Game Logic\Bat.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Blockbreaker.Logic.Item">
-    <Position X="5.75" Y="2.5" Width="1.5" />
+    <Position X="5.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Game Logic\Item.cs</FileName>

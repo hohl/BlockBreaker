@@ -20,6 +20,7 @@ namespace Blockbreaker.Logic
         /// <summary>
         /// Position of the block.
         /// </summary>
+
         public Vector2 Position
         {
             get;
@@ -33,6 +34,11 @@ namespace Blockbreaker.Logic
         {
             get;
             set;
+        }
+
+        public Bat()
+        {
+            this.Color = Color.White;
         }
     }
 }
