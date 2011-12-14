@@ -80,11 +80,17 @@ namespace Blockbreaker
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            // check keys
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                gameLevel.Start();
+            }
+
             // Update the game level and all it's contained objects.
             if (gameLevel != null)
             {
-                gameLevel.UpdateGameTime(gameTime);
                 gameLevel.UpdateInputDevice(mousePos);
+                gameLevel.UpdateGameTime(gameTime);
             }
 
             base.Update(gameTime);
@@ -101,7 +107,7 @@ namespace Blockbreaker
             spriteBatch.Begin();
             //this.DrawBlocks(spriteBatch, gameLevel.Blocks);
             this.DrawBat(spriteBatch, gameLevel.Bat);
-            //this.DrawBalls(spriteBatch, gameLevel.Balls);
+            this.DrawBalls(spriteBatch, gameLevel.Balls);
             spriteBatch.End();
 
             base.Draw(gameTime);

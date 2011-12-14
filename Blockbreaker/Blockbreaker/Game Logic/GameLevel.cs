@@ -17,6 +17,16 @@ namespace Blockbreaker.Logic
         protected float width, height;
 
         /// <summary>
+        /// Distance between Border and Bat
+        /// </summary>
+        private const int BatDistanceToBorder = 5;
+
+        /// <summary>
+        /// True if the game has started
+        /// </summary>
+        private bool isStarted;
+
+        /// <summary>
         /// Platform which is controlled by the player.
         /// </summary>
         public Bat Bat
@@ -55,7 +65,18 @@ namespace Blockbreaker.Logic
         public GameLevel(float width, float height)
         {
             this.Bat = new Bat();
+            this.width = width;
+            this.height = height;
             this.Bat.Position = new Vector2(width / 2, height - Bat.Texture.Height - 20);
+
+            // create balls
+            this.Balls = new List<Ball>();
+            this.Balls.Add(new Ball(new Vector2(-Ball.Texture.Width,-Ball.Texture.Height)));
+        }
+
+        public void Start()
+        {
+            isStarted = true;
         }
 
         /// <summary>
@@ -64,7 +85,23 @@ namespace Blockbreaker.Logic
         /// <param name="gameTime">Provides a snapshot of the game time</param>
         public void UpdateGameTime(GameTime gameTime)
         {
-            // ToDo: Implement!
+            if (isStarted)
+            {
+                foreach (Ball ball in this.Balls)
+                {
+                    for (int times = 0; times < gameTime.ElapsedGameTime.Milliseconds; times++)
+                    {
+                        ball.Position += ball.Acceleration;
+                    }
+                }
+            }
+            else
+            {
+                foreach(Ball ball in this.Balls)
+                {
+                    ball.Position = new Vector2(Bat.Position.X + Bat.Texture.Width / 2 - Ball.Texture.Width / 2, Bat.Position.Y - Ball.Texture.Height);
+                }
+            }
         }
 
         /// <summary>
@@ -73,7 +110,22 @@ namespace Blockbreaker.Logic
         /// <param name="mousePosition">Position of mouse</param>
         public void UpdateInputDevice(Vector2 mousePosition)
         {
-            this.Bat.Position = new Vector2(mousePosition.X - Bat.Texture.Width / 2, this.Bat.Position.Y);
+            float x;
+
+            if (mousePosition.X < Bat.Texture.Width / 2 + BatDistanceToBorder)
+            {
+                x = BatDistanceToBorder;
+            }
+            else if (mousePosition.X > this.width - Bat.Texture.Width / 2 - BatDistanceToBorder)
+            {
+                x = this.width - Bat.Texture.Width - BatDistanceToBorder;
+            }
+            else
+            {
+                x = mousePosition.X - Bat.Texture.Width / 2;
+            }
+
+            this.Bat.Position = new Vector2(x, this.Bat.Position.Y);
         }
     }
 }

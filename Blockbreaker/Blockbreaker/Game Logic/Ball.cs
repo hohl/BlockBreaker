@@ -43,5 +43,16 @@ namespace Blockbreaker.Logic
             get;
             set;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="position">Position of Bat</param>
+        public Ball(Vector2 position)
+        {
+            this.Color = Color.White;
+            this.Position = position;
+            this.Acceleration = new Vector2(0,-1);
+        }
     }
 }
