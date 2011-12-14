@@ -21,6 +21,10 @@ namespace Blockbreaker.Logic
         /// </summary>
         private const int BatDistanceToBorder = 5;
 
+        /// Space between 2 blocks
+        /// </summary>
+        private const float BlockSpace = 1;
+
         /// <summary>
         /// True if the game has started
         /// </summary>
@@ -62,6 +66,11 @@ namespace Blockbreaker.Logic
             set;
         }
 
+        /// <summary>
+        /// Creates a new level for the passed dimensions.
+        /// </summary>
+        /// <param name="width">Widht of the frame</param>
+        /// <param name="height">Height of the frame</param>
         public GameLevel(float width, float height)
         {
             this.Bat = new Bat();
@@ -69,9 +78,21 @@ namespace Blockbreaker.Logic
             this.height = height;
             this.Bat.Position = new Vector2(width / 2, height - Bat.Texture.Height - 20);
 
-            // create balls
+            // Create balls
             this.Balls = new List<Ball>();
             this.Balls.Add(new Ball(new Vector2(-Ball.Texture.Width,-Ball.Texture.Height)));
+
+            // Create Blocks:
+            this.Blocks = new List<Block>();
+            Random rand = new Random();
+            float blockOffset = (width - ((float)Math.Truncate(width / (Block.Texture.Width + BlockSpace)) * Block.Texture.Width)) / 2;
+            for (float x = blockOffset; x + Block.Texture.Width < width; x += Block.Texture.Width + BlockSpace)
+            {
+                for (float y = blockOffset; y + Block.Texture.Height < height / 2; y += Block.Texture.Height + BlockSpace)
+                {
+                    this.Blocks.Add(new Block(new Vector2(x, y), new Color((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble())));
+                }
+            }
         }
 
         public void Start()

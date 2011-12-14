@@ -105,7 +105,7 @@ namespace Blockbreaker
             GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
-            //this.DrawBlocks(spriteBatch, gameLevel.Blocks);
+            this.DrawBlocks(spriteBatch, gameLevel.Blocks);
             this.DrawBat(spriteBatch, gameLevel.Bat);
             this.DrawBalls(spriteBatch, gameLevel.Balls);
             spriteBatch.End();
