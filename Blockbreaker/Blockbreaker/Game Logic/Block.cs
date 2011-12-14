@@ -44,5 +44,24 @@ namespace Blockbreaker.Logic
             get;
             set;
         }
+
+        /// <summary>
+        /// Creates a new block with the passed position.
+        /// </summary>
+        /// <param name="position">Position of the block to create</param>
+        public Block(Vector2 position) : this(position, Color.White)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new block with the passed position and color.
+        /// </summary>
+        /// <param name="position">Position of the block to create</param>
+        /// <param name="color">Color of the block to create</param>
+        public Block(Vector2 position, Color color)
+        {
+            this.Color = color;
+            this.Position = position;
+        }
     }
 }
