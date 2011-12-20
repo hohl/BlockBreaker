@@ -38,7 +38,7 @@ namespace Blockbreaker.Logic
 
         public Bat()
         {
-            this.Color = Color.White;
+            this.Color = Color.Blue;
         }
     }
 }

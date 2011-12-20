@@ -45,6 +45,8 @@ namespace Blockbreaker.Logic
             set;
         }
 
+        public int LivePoints;
+
         /// <summary>
         /// Creates a new block with the passed position.
         /// </summary>
@@ -62,6 +64,7 @@ namespace Blockbreaker.Logic
         {
             this.Color = color;
             this.Position = position;
+            this.LivePoints = 3;
         }
     }
 }

@@ -86,6 +86,12 @@ namespace Blockbreaker
                 gameLevel.Start();
             }
 
+            // check mousebuttons
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                gameLevel.Start();
+            }
+
             // Update the game level and all it's contained objects.
             if (gameLevel != null)
             {
